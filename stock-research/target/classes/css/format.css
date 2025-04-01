@@ -1,0 +1,44 @@
+#lblTilted{
+    /*font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;*/
+    -fx-font-size: 40pt;
+}
+.radio{
+    -fx-min-width: 1.5in;
+}
+
+#fpMarketCap{
+    -fx-vgap: .05in;
+}
+
+#label-here {
+    -fx-border-color: black;
+    -fx-border-wtyle: solid;
+    -fx-border-width: 1px;
+    -fx-min-width: 1.1in;
+    -fx-text-alignment: center;
+-fx-alignment: center;
+}
+label {
+    -fx-border-color: black;
+    -fx-border-wtyle: solid;
+    -fx-border-width: 1px;
+    -fx-min-width: 1.1in;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+#fpMonths .check-box{
+    -fx-border-width: 1px;
+    -fx-min-width: 1.1in;
+    -fx-padding: 3px;
+}
+
+.month-color {
+    -fx-background-color: pink;
+    -fx-text-fill: black; /* Optional: Set text color for better contrast */
+    /*-fx-alignment: center; /* Center the text */
+}

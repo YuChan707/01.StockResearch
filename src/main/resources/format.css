@@ -1,0 +1,5 @@
+.month-color {
+    -fx-background-color: pink;
+    -fx-text-fill: black; /* Optional: Set text color for better contrast */
+    /*-fx-alignment: center; /* Center the text */
+}

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.citytech.cst3613.SearchStockController">
+   <children>
+      <Label fx:id="lblTitle" contentDisplay="CENTER" layoutX="365.0" layoutY="1.0" prefHeight="58.0" prefWidth="203.0" text="Stock Search" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <FlowPane fx:id="fpMarketCap" layoutX="36.0" layoutY="160.0" prefHeight="69.0" prefWidth="754.0" stylesheets="@../../../css/format.css">
+         <children>
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" selected="true" userData="0" text="All" toggleGroup="$tgMarketCap">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tgMarketCap" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="0 - 100M" toggleGroup="$tgMarketCap" userData="1" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="100M -500M" toggleGroup="$tgMarketCap" userData="2" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="500M - 1B" toggleGroup="$tgMarketCap" userData="3" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="1B - 30B" toggleGroup="$tgMarketCap" userData="4" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="30B - 200B" toggleGroup="$tgMarketCap" userData="5" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="200B - 500B" toggleGroup="$tgMarketCap" userData="6" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="500B - 750B" toggleGroup="$tgMarketCap" userData="7" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="750B - 999B" toggleGroup="$tgMarketCap" userData="8" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="999b - 2t" toggleGroup="$tgMarketCap" userData="9" />
+            <RadioButton mnemonicParsing="false" onAction="#selectMarketCap" text="2T - 36T" toggleGroup="$tgMarketCap" userData="10" />
+         </children>
+      </FlowPane>
+      <FlowPane fx:id="fpStocks" alignment="CENTER" columnHalignment="CENTER" layoutX="37.0" layoutY="246.0" prefHeight="221.0" prefWidth="754.0" stylesheets="@format.css">
+         <children>
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+            <Label id="label-here" prefHeight="18.0" prefWidth="186.0" text="Stock" />
+         </children>
+      </FlowPane>
+      <Button layoutX="336.0" layoutY="468.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="155.0" text="Search" />
+      <AnchorPane layoutX="36.0" layoutY="42.0" prefHeight="46.0" prefWidth="722.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="14.0" prefHeight="18.0" prefWidth="142.0" text="Stock Prices Between">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="171.0" layoutY="11.0" prefHeight="26.0" prefWidth="186.0" />
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="368.0" layoutY="14.0" prefHeight="18.0" prefWidth="56.0" text="and">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="424.0" layoutY="10.0" prefHeight="26.0" prefWidth="186.0" />
+         </children>
+      </AnchorPane>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="471.0" prefHeight="20.0" prefWidth="203.0" text="Developver: Yuzhen Chen">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="554.0" layoutY="471.0" prefHeight="20.0" prefWidth="203.0" text="Row Count: 77">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <FlowPane fx:id="fpMonths" layoutX="35.0" layoutY="88.0" prefHeight="58.0" prefWidth="754.0">
+         <children>
+         <!--DEVELOPVER: YUZHEN CHEN-->
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="All" userData="0" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Jan" userData="1" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Feb" userData="2" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Mar" userData="3" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Apr" userData="4" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="May" userData="5" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Jun" userData="6" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Jul" userData="7" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Aug" userData="8" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Sep" userData="9" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Oct" userData="10" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Nov" userData="11" />
+            <CheckBox mnemonicParsing="false" onAction="#monthSelection" text="Dec" userData="12" />
+         </children>
+      </FlowPane>
+   </children>
+   <stylesheets>
+      <URL value="@format.css" />
+      <URL value="@../../../css/format.css" />
+   </stylesheets>
+</AnchorPane>
