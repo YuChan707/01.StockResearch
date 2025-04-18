@@ -31,9 +31,11 @@ public class CounterController implements Initializable{
 
     @Override
     public void initialize( URL url, ResourceBundle resource){
+        byStart.getItems().clear();
         generateLabels(-5, 0);
         populateTreeView();
         treeViewNumberSelection();
+        
     }
     
     public void generateLabels(int incrementBy, int startWith){
@@ -85,6 +87,7 @@ public class CounterController implements Initializable{
         var numbers = counterServices.getNumbers();
         for(CounterServices.Digit digit : numbers){
             TreeItem<String> item = new TreeItem<>(digit.description);
+            byStart.getItems().add(digit.description);
             children.add(item);
         }
 
@@ -97,7 +100,7 @@ public class CounterController implements Initializable{
         ComboBox<String> comboBox = (ComboBox<String>) event.getSource();
         //System.out.println("Event: " + comboBox.getClass().getName());
 
-        int number = counterServices.getNumberVersion(comboBox.getValue());
-        System.out.println("Event: " + comboBox.getValue() + " " + number);
+        //int number = counterServices.getNumberVersion(comboBox.getValue());
+        //System.out.println("Event: " + comboBox.getValue() + " " + number);
     }
 }
