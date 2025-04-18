@@ -62,6 +62,9 @@ public class CounterServices {
         listOfNumbers.add(new Digit("Twenty Eight", 28));
         listOfNumbers.add(new Digit("Twenty Nine", 29));
         listOfNumbers.add(new Digit("Thirty", 30));
+        listOfNumbers.add(new Digit("Thirty One", 31));
+        listOfNumbers.add(new Digit("Thirty Two", 32));
+        listOfNumbers.add(new Digit("Thirty Three", 33));
     }
 
     public static void main(String[] args) {
