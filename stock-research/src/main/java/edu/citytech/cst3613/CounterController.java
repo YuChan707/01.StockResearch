@@ -76,6 +76,8 @@ public class CounterController implements Initializable{
         //Object object = (ComboBox) event.getSource();
         ComboBox<String> comboBox = (ComboBox<String>) event.getSource();
         //System.out.println("Event: " + comboBox.getClass().getName());
-        System.out.println("Event: " + comboBox.getValue());
+
+        int number = counterServices.getNumberVersion(comboBox.getValue());
+        System.out.println("Event: " + comboBox.getValue() + " " + number);
     }
 }

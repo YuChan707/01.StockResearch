@@ -27,10 +27,11 @@ public class CounterServices {
                 return digit.number;
             }
         }
-        return -5; // Default value if not found
+        return -6; // Default value if not found
     }
 
     public CounterServices(){
+        listOfNumbers.add(new Digit("Zero", 0));
         listOfNumbers.add(new Digit("One", 1));
         listOfNumbers.add(new Digit("Two", 2));
         listOfNumbers.add(new Digit("Three", 3));
