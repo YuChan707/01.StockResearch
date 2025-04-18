@@ -14,7 +14,7 @@ public class CounterServices {
         public String toString() {
             return "Digit [description=" + description + ", number=" + number + "]";
         }
-        final String description; final int number;
+        public final String description; final int number;
     };
     private List<Digit> listOfNumbers = new ArrayList<Digit>();
     public List<Digit> getNumbers() {
