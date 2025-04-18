@@ -40,6 +40,12 @@
                <String fx:value="Three" />
                <String fx:value="Four" />
                <String fx:value="Five" />
+               <String fx:value="Six" />
+               <String fx:value="Seven" />
+               <String fx:value="Eight" />
+               <String fx:value="Nine" />
+               <String fx:value="Ten" />
+               <String fx:value="Eleven" />
             </FXCollections>
          </items>
       </ComboBox>
