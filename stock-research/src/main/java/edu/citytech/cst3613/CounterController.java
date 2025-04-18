@@ -28,25 +28,30 @@ public class CounterController implements Initializable{
 
     @Override
     public void initialize( URL url, ResourceBundle resource){
-        ObservableList<Node> children = fpNumbers.getChildren();
-        
-        //Label label = new Label("data");
-        //children.add(label);
-        for (int i = 0; i < 150; i++){
-            //Label label = new Label(String.valueOf(i));
-            Label label = new Label(i + "");
-            children.add(label);
-        }
-
+        generateLabels(-5);
         populateTreeView();
         treeViewNumberSelection();
     }
     
+    public void generateLabels(int startNumber){
+        ObservableList<Node> children = fpNumbers.getChildren();
+        //Label label = new Label("data");
+        //children.add(label);
+
+        fpNumbers.getChildren().clear();
+        for (int i = 0; i < 200; i++){
+            Label label = new Label((i * startNumber) + "");
+            children.add(label);
+        }
+    }
+
     private void treeViewNumberSelection() {
         var itemSelected = tvCounter.getSelectionModel().selectedItemProperty();
         itemSelected.addListener((a, b, c) -> {
             //System.out.println("Selected: " + c.getValue());
-            lblCountBy.setText("Count by " + c.getValue());
+            int number = counterServices.getNumberVersion(c.getValue());
+            lblCountBy.setText("Count by " + c.getValue() + ": " + number);
+            generateLabels(number);
         });
     }
 
