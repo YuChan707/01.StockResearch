@@ -1,22 +1,23 @@
 package edu.citytech.cst3613;
 
-import java.util.Observable;
+//import java.util.Observable;
 import java.util.ResourceBundle;
 
 import edu.citytech.cst3613.services.CounterServices;
 
-// Removed unused import for org.w3c.dom.css.Counter
-
 import java.net.URL;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 
 public class CounterController implements Initializable{
     @FXML
@@ -68,5 +69,13 @@ public class CounterController implements Initializable{
         }
 
         tvCounter.setRoot(rootItem);
+    }
+
+     @FXML
+    void selectStartWith(ActionEvent event) {
+        //Object object = (ComboBox) event.getSource();
+        ComboBox<String> comboBox = (ComboBox<String>) event.getSource();
+        //System.out.println("Event: " + comboBox.getClass().getName());
+        System.out.println("Event: " + comboBox.getValue());
     }
 }
