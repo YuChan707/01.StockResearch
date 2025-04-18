@@ -31,7 +31,7 @@
             <FlowPane fx:id="fpNumbers" prefHeight="442.0" prefWidth="442.0" />
          </content>
       </ScrollPane>
-      <ComboBox fx:id="byStart" layoutX="333.0" layoutY="87.0" fx:value="Zero" onAction="#selectStartWith" prefHeight="26.0" prefWidth="147.0">
+      <ComboBox fx:id="byStart" layoutX="333.0" layoutY="87.0" value="Zero" onAction="#selectStartWith" prefHeight="26.0" prefWidth="147.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Zero" />
