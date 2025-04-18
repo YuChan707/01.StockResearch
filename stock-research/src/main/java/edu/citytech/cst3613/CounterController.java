@@ -25,8 +25,9 @@ public class CounterController implements Initializable{
         
         //Label label = new Label("data");
         //children.add(label);
-        for (int i = 0; i < 15; i++){
-            Label label = new Label(String.valueOf(i));
+        for (int i = 0; i < 150; i++){
+            //Label label = new Label(String.valueOf(i));
+            Label label = new Label(i + "");
             children.add(label);
         }
     }
