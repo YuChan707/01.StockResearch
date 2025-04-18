@@ -25,3 +25,11 @@
     -fx-padding: 2px;
     -fx-aligment: center;
 }
+#startBy{
+    -fx-aligment: center;
+    -fx-font-size: 15pt;
+}
+#byStart{
+    -fx-aligment: center;
+    -fx-font-size: 10pt;
+}
