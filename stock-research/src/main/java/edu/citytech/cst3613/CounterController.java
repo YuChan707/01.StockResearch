@@ -17,7 +17,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
+//import javafx.scene.control.ComboBox;
 
 public class CounterController implements Initializable{
     @FXML
@@ -26,33 +26,53 @@ public class CounterController implements Initializable{
     private Label lblCountBy;
     @FXML
     private TreeView<String> tvCounter;
+    @FXML
+    private ComboBox<String> byStart;
 
     @Override
     public void initialize( URL url, ResourceBundle resource){
-        generateLabels(-5);
+        generateLabels(-5, 0);
         populateTreeView();
         treeViewNumberSelection();
     }
     
-    public void generateLabels(int startNumber){
+    public void generateLabels(int incrementBy, int startWith){
         ObservableList<Node> children = fpNumbers.getChildren();
         //Label label = new Label("data");
         //children.add(label);
 
         fpNumbers.getChildren().clear();
-        for (int i = 0; i < 200; i++){
-            Label label = new Label((i * startNumber) + "");
+        String sNumbers = "";
+
+        /*
+        //good bye for loop
+        //need use do-while
+        for (int i = startWith; i < 200; i++){
+            Label label = new Label((i * incrementBy) + "");
             children.add(label);
-        }
+        }*/
+        //declare values for
+        int i =0, total = startWith;
+        do{
+            sNumbers = total + "";
+            Label label = new Label(sNumbers);
+            children.add(label);
+            i++;
+
+            total = total + incrementBy;
+        }while(i < 200);
     }
 
     private void treeViewNumberSelection() {
         var itemSelected = tvCounter.getSelectionModel().selectedItemProperty();
+
         itemSelected.addListener((a, b, c) -> {
             //System.out.println("Selected: " + c.getValue());
             int number = counterServices.getNumberVersion(c.getValue());
+
             lblCountBy.setText("Count by " + c.getValue() + ": " + number);
-            generateLabels(number);
+            int starstWith = counterServices.getNumberVersion(byStart.getValue());
+            generateLabels(number, starstWith);
         });
     }
 
