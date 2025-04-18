@@ -31,21 +31,13 @@
             <FlowPane fx:id="fpNumbers" prefHeight="442.0" prefWidth="442.0" />
          </content>
       </ScrollPane>
-      <ComboBox fx:id="byStart" layoutX="333.0" layoutY="87.0" value="Zero" onAction="#selectStartWith" prefHeight="26.0" prefWidth="147.0">
+      <ComboBox fx:id="byStart" layoutX="333.0" layoutY="87.0" fx:value="Zero" onAction="#selectStartWith" prefHeight="26.0" prefWidth="147.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Zero" />
                <String fx:value="One" />
                <String fx:value="Two" />
                <String fx:value="Three" />
-               <String fx:value="Four" />
-               <String fx:value="Five" />
-               <String fx:value="Six" />
-               <String fx:value="Seven" />
-               <String fx:value="Eight" />
-               <String fx:value="Nine" />
-               <String fx:value="Ten" />
-               <String fx:value="Eleven" />
             </FXCollections>
          </items>
       </ComboBox>
