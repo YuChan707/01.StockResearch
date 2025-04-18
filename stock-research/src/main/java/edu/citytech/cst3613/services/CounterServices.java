@@ -21,6 +21,15 @@ public class CounterServices {
         return this.listOfNumbers;
     }
 
+    public int getNumberVersion(String sNumber) {
+        for (Digit digit : listOfNumbers) {
+            if (digit.description.equals(sNumber)) {
+                return digit.number;
+            }
+        }
+        return -5; // Default value if not found
+    }
+
     public CounterServices(){
         listOfNumbers.add(new Digit("One", 1));
         listOfNumbers.add(new Digit("Two", 2));
