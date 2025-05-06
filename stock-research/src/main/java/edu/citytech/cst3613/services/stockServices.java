@@ -9,7 +9,9 @@ public class stockServices {
     private static final String SURL = "https://localhost:8000/stocks/dividends";
 
     List<Stock> getStocks(){
-        submitGet(SURL, Stock.class);
+        var stockResult = submitGet(SURL, Stock.class);
+
+        System.out.println(stockResult);
         var list = new ArrayList<Stock>();
         return list;
     }
