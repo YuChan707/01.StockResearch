@@ -1,6 +1,7 @@
 module edu.citytech.cst3613 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.jbbwebsolutions.http.utility;
     requires javafx.graphics;
     requires javafx.base;
 

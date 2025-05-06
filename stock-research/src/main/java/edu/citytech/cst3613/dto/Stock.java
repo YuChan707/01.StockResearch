@@ -1,5 +1,7 @@
 package edu.citytech.cst3613.dto;
 
-public class Stock {
+import java.util.List;
 
+public class Stock {
+    private List<String> data;
 }
