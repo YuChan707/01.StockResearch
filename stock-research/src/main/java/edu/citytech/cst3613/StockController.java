@@ -40,20 +40,10 @@ public class StockController implements Initializable{
     
     public void generateLabels(int incrementBy, int startWith){
         ObservableList<Node> children = fpNumbers.getChildren();
-        //Label label = new Label("data");
-        //children.add(label);
 
         fpNumbers.getChildren().clear();
         String sNumbers = "";
 
-        /*
-        //good bye for loop
-        //need use do-while
-        for (int i = startWith; i < 200; i++){
-            Label label = new Label((i * incrementBy) + "");
-            children.add(label);
-        }*/
-        //declare values for
         int i =0, total = startWith;
         do{
             sNumbers = total + "";
@@ -72,22 +62,25 @@ public class StockController implements Initializable{
             //System.out.println("Selected: " + c.getValue());
             int number = counterServices.getNumberVersion(c.getValue());
 
-            lblCountBy.setText("Count by " + c.getValue() + ": " + number);
+            lblCountBy.setText("Company by the letter" + c.getValue() + ": " + number);
             int starstWith = counterServices.getNumberVersion(byStart.getValue());
             generateLabels(number, starstWith);
         });
     }
 
     CounterServices counterServices = new CounterServices();
+
     private void populateTreeView(){
-        TreeItem<String> rootItem= new TreeItem<>("Numbers");
+        TreeItem<String> rootItem= new TreeItem<>("Letters");
 
         var children = rootItem.getChildren();
         rootItem.setExpanded(true);
-        var numbers = counterServices.getNumbers();
-        for(CounterServices.Digit digit : numbers){
-            TreeItem<String> item = new TreeItem<>(digit.description);
-            byStart.getItems().add(digit.description);
+
+        var numbers = counterServices.ABC();
+
+        for(Character digit : numbers){
+            TreeItem<String> item = new TreeItem<>(digit + "");
+            //byStart.getItems().add(digit.description);
             children.add(item);
         }
 
@@ -96,11 +89,6 @@ public class StockController implements Initializable{
 
      @FXML
     void selectStartWith(ActionEvent event) {
-        //Object object = (ComboBox) event.getSource();
         ComboBox<String> comboBox = (ComboBox<String>) event.getSource();
-        //System.out.println("Event: " + comboBox.getClass().getName());
-
-        //int number = counterServices.getNumberVersion(comboBox.getValue());
-        //System.out.println("Event: " + comboBox.getValue() + " " + number);
     }
 }
