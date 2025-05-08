@@ -18,7 +18,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //scene = new Scene(loadFXML("searchStocks"), 640, 480);
-        scene = new Scene(loadFXML("CounterTreeView"), 700, 700);
+        //scene = new Scene(loadFXML("CounterTreeView"), 700, 700);
+        scene = new Scene(loadFXML("StockTreeView"), 700, 700);
         stage.setScene(scene);
         stage.setTitle("CHEN, YUZHEN: " + new java.util.Date());
         stage.show();
