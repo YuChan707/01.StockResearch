@@ -75,6 +75,14 @@ public class CounterServices {
         listOfNumbers.add(new Digit("Forty Two", 42));
     }
 
+    public static List<Character> ABC(){
+        List<Character> Alphabet = new ArrayList<>();
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
+            Alphabet.add(ch);
+        }
+        return Alphabet;
+    }
+
     public static void main(String[] args) {
         CounterServices cs = new CounterServices();
         cs.getNumbers().forEach(System.out::println);
