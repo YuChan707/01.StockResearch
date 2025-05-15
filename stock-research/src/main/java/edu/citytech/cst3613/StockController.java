@@ -36,7 +36,7 @@ public class StockController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resource) {
         byStart.getItems().clear();
-        generateLabels(-5, 0);
+        generateLabels("All");
         populateTreeView();
         treeViewNumberSelection();
 
@@ -50,13 +50,13 @@ public class StockController implements Initializable {
         return (formatter.format(amount));
     }
 
-    public void generateLabels(int incrementBy, int startWith) {
+    public void generateLabels(String query) {
         ObservableList<Node> children = fpNumbers.getChildren();
         fpNumbers.getChildren().clear();
 
         var stockService = new stockService();
 
-        List<stock> list = stockService.getStocks();
+        List<stock> list = stockService.getStocks(query);
 
         for (stock stock_ : list) {
             Label label = new Label(stock_.symbol + " | " + commanFormat(stock_.marketCapInMillions) + 
@@ -67,15 +67,11 @@ public class StockController implements Initializable {
     }
 
     private void treeViewNumberSelection() {
-        var itemSelected = tvCounter.getSelectionModel().selectedItemProperty();
+        var x = tvCounter.getSelectionModel().selectedItemProperty();
 
-        itemSelected.addListener((a, b, c) -> {
-            // System.out.println("Selected: " + c.getValue());
-            int number = counterServices.getNumberVersion(c.getValue());
-
-            lblCountBy.setText("Company by the letter" + c.getValue() + ": " + number);
-            int starstWith = counterServices.getNumberVersion(byStart.getValue());
-            generateLabels(number, starstWith);
+        x.addListener((a, b, c) -> {
+            System.out.println("Company by the letter  -  " + c.getValue());
+            generateLabels(c.getValue());
         });
     }
 
