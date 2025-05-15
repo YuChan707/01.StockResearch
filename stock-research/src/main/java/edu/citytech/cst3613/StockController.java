@@ -42,6 +42,8 @@ public class StockController implements Initializable {
 
     }
 
+    private stockService x_stockServices = new stockService();
+
     // can tak big numbers
     private String commanFormat(double number) {
         String sNumber = number + "";
@@ -71,7 +73,8 @@ public class StockController implements Initializable {
 
         x.addListener((a, b, c) -> {
             System.out.println("Company by the letter  -  " + c.getValue());
-            generateLabels(c.getValue());
+            String queryData = c.getValue().split(" ")[0];
+            generateLabels(queryData);
         });
     }
 
@@ -83,12 +86,16 @@ public class StockController implements Initializable {
         var children = rootItem.getChildren();
         rootItem.setExpanded(true);
 
-        var numbers = counterServices.ABC();
+        var numbers = CounterServices.ABC();
+        var mapping = x_stockServices.getMap();
 
         for (Character digit : numbers) {
-            TreeItem<String> item = new TreeItem<>(digit + "");
-            // byStart.getItems().add(digit.description);
-            children.add(item);
+            if(mapping.containsKey(digit)){
+                int count = mapping.get(digit);
+
+                TreeItem<String> item = new TreeItem<>(digit + " has " + count + " stocks");
+                children.add(item);
+            }
         }
 
         tvCounter.setRoot(rootItem);
