@@ -26,9 +26,9 @@
          </font>
       </Label>
       <Label layoutX="38.0" layoutY="602.0" prefHeight="18.0" prefWidth="200.0" text="Developver: Yuzhen C" />
-      <ScrollPane layoutX="238.0" layoutY="127.0" prefHeight="461.0" prefWidth="438.0">
+      <ScrollPane layoutX="238.0" layoutY="127.0" prefHeight="461.0" prefWidth="638.0">
          <content>
-            <FlowPane fx:id="fpNumbers" prefHeight="442.0" prefWidth="442.0" />
+            <FlowPane fx:id="fpNumbers" prefHeight="442.0" prefWidth="642.0" />
          </content>
       </ScrollPane>
       <ComboBox fx:id="byStart" layoutX="333.0" layoutY="87.0" onAction="#selectStartWith" prefHeight="26.0" prefWidth="147.0" value="Zero">

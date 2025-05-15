@@ -9,6 +9,7 @@ import edu.citytech.cst3613.services.CounterServices;
 import edu.citytech.cst3613.services.stockService;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +23,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.Node;
 //import javafx.scene.control.ComboBox;
 
-public class StockController implements Initializable{
+public class StockController implements Initializable {
     @FXML
     private FlowPane fpNumbers;
     @FXML
@@ -33,15 +34,23 @@ public class StockController implements Initializable{
     private ComboBox<String> byStart;
 
     @Override
-    public void initialize( URL url, ResourceBundle resource){
+    public void initialize(URL url, ResourceBundle resource) {
         byStart.getItems().clear();
         generateLabels(-5, 0);
         populateTreeView();
         treeViewNumberSelection();
-        
+
     }
-    
-    public void generateLabels(int incrementBy, int startWith){
+
+    // can tak big numbers
+    private String commanFormat(double number) {
+        String sNumber = number + "";
+        double amount = Double.parseDouble(sNumber);
+        DecimalFormat formatter = new DecimalFormat("#,###.000");
+        return (formatter.format(amount));
+    }
+
+    public void generateLabels(int incrementBy, int startWith) {
         ObservableList<Node> children = fpNumbers.getChildren();
         fpNumbers.getChildren().clear();
 
@@ -49,11 +58,11 @@ public class StockController implements Initializable{
 
         List<stock> list = stockService.getStocks();
 
-        for(stock stock_ : list){
-            Label label = new Label(stock_.symbol);
+        for (stock stock_ : list) {
+            Label label = new Label(stock_.symbol + " | " + commanFormat(stock_.marketCapInMillions) + 
+            " | " + commanFormat(stock_.divYield * 100) + "%. ");
             children.add(label);
         }
-
 
     }
 
@@ -61,7 +70,7 @@ public class StockController implements Initializable{
         var itemSelected = tvCounter.getSelectionModel().selectedItemProperty();
 
         itemSelected.addListener((a, b, c) -> {
-            //System.out.println("Selected: " + c.getValue());
+            // System.out.println("Selected: " + c.getValue());
             int number = counterServices.getNumberVersion(c.getValue());
 
             lblCountBy.setText("Company by the letter" + c.getValue() + ": " + number);
@@ -72,24 +81,24 @@ public class StockController implements Initializable{
 
     CounterServices counterServices = new CounterServices();
 
-    private void populateTreeView(){
-        TreeItem<String> rootItem= new TreeItem<>("Letters");
+    private void populateTreeView() {
+        TreeItem<String> rootItem = new TreeItem<>("Letters");
 
         var children = rootItem.getChildren();
         rootItem.setExpanded(true);
 
         var numbers = counterServices.ABC();
 
-        for(Character digit : numbers){
+        for (Character digit : numbers) {
             TreeItem<String> item = new TreeItem<>(digit + "");
-            //byStart.getItems().add(digit.description);
+            // byStart.getItems().add(digit.description);
             children.add(item);
         }
 
         tvCounter.setRoot(rootItem);
     }
 
-     @FXML
+    @FXML
     void selectStartWith(ActionEvent event) {
         ComboBox<String> comboBox = (ComboBox<String>) event.getSource();
     }
