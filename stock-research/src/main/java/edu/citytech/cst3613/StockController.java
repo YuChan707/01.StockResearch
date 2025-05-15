@@ -1,9 +1,12 @@
 package edu.citytech.cst3613;
 
+import java.util.List;
 //import java.util.Observable;
 import java.util.ResourceBundle;
 
+import edu.citytech.cst3613.dto.stock;
 import edu.citytech.cst3613.services.CounterServices;
+import edu.citytech.cst3613.services.stockService;
 
 import java.net.URL;
 
@@ -40,19 +43,18 @@ public class StockController implements Initializable{
     
     public void generateLabels(int incrementBy, int startWith){
         ObservableList<Node> children = fpNumbers.getChildren();
-
         fpNumbers.getChildren().clear();
-        String sNumbers = "";
 
-        int i =0, total = startWith;
-        do{
-            sNumbers = total + "";
-            Label label = new Label(sNumbers);
+        var stockService = new stockService();
+
+        List<stock> list = stockService.getStocks();
+
+        for(stock stock_ : list){
+            Label label = new Label(stock_.symbol);
             children.add(label);
-            i++;
+        }
 
-            total = total + incrementBy;
-        }while(i < 200);
+
     }
 
     private void treeViewNumberSelection() {
