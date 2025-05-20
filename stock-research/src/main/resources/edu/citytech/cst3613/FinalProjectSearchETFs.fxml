@@ -16,7 +16,7 @@
       </Label>
       <Label fx:id="lblSubtitle" layoutX="31.0" layoutY="21.0" prefHeight="39.0" prefWidth="748.0" stylesheets="@../../../css/ETFs.css" text="Dev Yuzhen Chen" />
       <Label fx:id="lblSubtitle" layoutX="31.0" layoutY="114.0" prefHeight="39.0" prefWidth="203.0" stylesheets="@../../../css/ETFs.css" text="Stack Symbol" />
-      <TextField layoutX="208.0" layoutY="120.0" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../css/ETFs.css" />
+      <TextField fx:id="tfGetSymbol" layoutX="208.0" layoutY="120.0" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../css/ETFs.css" />
       <FlowPane id="showData" fx:id="fpInformation" layoutX="190.0" layoutY="190.0" prefHeight="334.0" prefWidth="580.0" stylesheets="@../../../css/ETFs.css">
          <children>
             <Label fx:id="lblInformation" text="Rank: " />
