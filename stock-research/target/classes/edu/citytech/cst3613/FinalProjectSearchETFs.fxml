@@ -19,22 +19,7 @@
       <TextField fx:id="tfGetSymbol" layoutX="208.0" layoutY="120.0" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../css/ETFs.css" />
       <FlowPane id="showData" fx:id="fpInformation" layoutX="190.0" layoutY="190.0" prefHeight="334.0" prefWidth="580.0" stylesheets="@../../../css/ETFs.css">
          <children>
-            <Label fx:id="lblInformation" text="Rank: " />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="Company Name" />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="Price" />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="Quant Rating: " />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="Aum in Billions: " />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="Frequency" />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="PayOut Date: " />
-            <Label fx:id="lblInformation" text="Label" />
-            <Label fx:id="lblInformation" text="Expenses Ratio: " />
-            <Label fx:id="lblInformation" text="Label" />
+            <Label fx:id="lblInformation" text="HERE IS WHERE THE DATA DISPLAY" />
          </children>
       </FlowPane>
       <Label fx:id="lblSubtitle" layoutX="31.0" layoutY="212.0" prefHeight="18.0" prefWidth="147.0" stylesheets="@../../../css/ETFs.css" text="Meta Data" />

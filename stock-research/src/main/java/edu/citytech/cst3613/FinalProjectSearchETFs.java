@@ -1,126 +1,84 @@
 package edu.citytech.cst3613;
 
-import java.util.List;
-//import java.util.Observable;
-import java.util.ResourceBundle;
-
 import edu.citytech.cst3613.dto.etfs;
-import edu.citytech.cst3613.services.CounterServices;
 import edu.citytech.cst3613.services.etfsServices;
-
-import java.net.URL;
-import java.text.DecimalFormat;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.Node;
 
+import java.text.DecimalFormat;
+import java.util.List;
 
-public class FinalProjectSearchETFs implements Initializable {
-        //need delete - start
+public class FinalProjectSearchETFs {
+
     @FXML
-    private FlowPane fpNumbers;
+    private TextField tfGetSymbol;
+
     @FXML
-    private Label lblCountBy;
-    @FXML
-    private TreeView<String> tvCounter;
-    @FXML
-    private ComboBox<String> byStart;
-        //need delete - end
-        @FXML
     private Button btnSearch;
 
     @FXML
     private FlowPane fpInformation;
 
-    @FXML
-    private Label lblInformation;
+    private etfsServices service;
 
     @FXML
-    private Label lblSubtitle;
-
-    @FXML
-    private Label lblTitle;
-
-    @FXML
-    private TextField tfGetSymbol;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resource) {
-        byStart.getItems().clear();
-        generateLabels("All");
-        populateTreeView();
-
+    public void initialize() {
+        // Initialize service and attach event
+        service = new etfsServices();
+        btnSearch.setOnAction(this::handleSearch);
     }
 
-    private etfsServices theETFs_Service = new etfsServices();
+    private void handleSearch(ActionEvent event) {
+        String query = tfGetSymbol.getText().trim();
 
-    // can tak big numbers
-    private String commanFormat(double number) {
-        String sNumber = number + "";
-        double amount = Double.parseDouble(sNumber);
-        DecimalFormat formatter = new DecimalFormat("#,###.000");
-        return (formatter.format(amount));
+        if (query.isEmpty()) {
+            displayMessage("⚠ Please enter a symbol to search.");
+        } else {
+            generateLabels(query);
+        }
+    }
+
+    private void displayMessage(String message) {
+        fpInformation.getChildren().clear();
+        fpInformation.getChildren().add(new Label(message));
     }
 
     public void generateLabels(String query) {
-        ObservableList<Node> children = fpNumbers.getChildren();
-        fpNumbers.getChildren().clear();
+        ObservableList<Node> children = fpInformation.getChildren();
+        children.clear();
 
-        var etfsServices_ = new etfsServices();
+        List<etfs> list = service.getETFs(query);
 
-        List<etfs> list = etfsServices_.getETFs(query);
+        if (list == null || list.isEmpty()) {
+            children.add(new Label("🔍 No ETFs found for symbol: " + query));
+            return;
+        }
 
         for (etfs etf_ : list) {
-            Label label1 = new Label("Rank : "+ etf_.rank);
-            children.add(label1);
-            Label label2 = new Label("FundName : "+ etf_.fundName);
-            children.add(label2);
-            Label label3 = new Label("Price : " + commanFormat(etf_.price));
-            children.add(label3);
-            Label label4 = new Label("Quant Rating : " + etf_.quantRating);
-            children.add(label4);
-            Label label5 = new Label("Aum In Billion : " + commanFormat(etf_.aumInBillion));
-            children.add(label5);
-            Label label6 = new Label("Frequency : " + etf_.frequency);
-            children.add(label6);
-            Label label7 = new Label("Pay-Out Date : " + etf_.payOutDate);
-            children.add(label7);
-            Label label8 = new Label("Expense Ratio : " + etf_.expenseRatio);
-            children.add(label8);
-        }
+            children.add(new Label("Rank: " + etf_.rank));
+            children.add(new Label("Fund Name: " + etf_.fundName));
+            children.add(new Label("Symbol: " + etf_.symbol));
+            children.add(new Label("Price: $" + formatNumber(etf_.price)));
+            children.add(new Label("Quant Rating: " + etf_.quantRating));
+            children.add(new Label("AUM In Billion: $" + formatNumber(etf_.aumInBillion)));
+            children.add(new Label("Frequency: " + etf_.frequency));
+            children.add(new Label("Pay-Out Date: " + etf_.payOutDate));
+            children.add(new Label("Expense Ratio: " + etf_.expenseRatio));
 
+            Label spacer = new Label("                                      ");
+            spacer.setStyle("-fx-padding: 10 0 10 0;");
+            children.add(spacer);
+        }
     }
 
-    CounterServices counterServices = new CounterServices();
-
-    private void populateTreeView() {
-        TreeItem<String> rootItem = new TreeItem<>("Symbol");
-
-        var children = rootItem.getChildren();
-        rootItem.setExpanded(true);
-
-        var numbers = CounterServices.ABC();
-        var mapping = theETFs_Service.getMap();
-
-        for (Character digit : numbers) {
-            if(mapping.containsKey(digit)){
-                int count = mapping.get(digit);
-
-                TreeItem<String> item = new TreeItem<>(digit + " has " + count + " stocks");
-                children.add(item);
-            }
-        }
-
-        tvCounter.setRoot(rootItem);
+    private String formatNumber(double number) {
+        DecimalFormat df = new DecimalFormat("#,###.##");
+        return df.format(number);
     }
 }
