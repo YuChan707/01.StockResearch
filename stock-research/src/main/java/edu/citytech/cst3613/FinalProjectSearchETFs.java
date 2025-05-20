@@ -75,13 +75,12 @@ public class FinalProjectSearchETFs {
             card.getChildren().addAll(
                     new Label("Rank: " + etf_.rank),
                     new Label("Company Name: " + etf_.fundName),
-                    new Label("Symbol: " + etf_.symbol),
                     new Label("Price: $" + formatNumber(etf_.price)),
                     new Label("Quant Rating: " + etf_.quantRating),
                     new Label("AUM in Billions: $" + formatNumber(etf_.aumInBillion)),
                     new Label("Frequency: " + etf_.frequency),
                     new Label("Pay-Out Date: " + etf_.payOutDate),
-                    new Label("Expense Ratio: " + etf_.expenseRatio)
+                    new Label("Expense Ratio: " + etf_.expenseRatio + "%")
             );
 
             children.add(card);
