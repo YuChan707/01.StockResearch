@@ -42,23 +42,29 @@ public class etfsServices {
         }
     }
 
-
     // Return full list of ETFs
     public List<etfs> getETFs() {
         return etfsResults.getData();
     }
 
     // Return filtered ETFs by symbol prefix
+
     public List<etfs> getETFs(String query) {
         List<etfs> list = this.getETFs();
         if (query.equalsIgnoreCase("All")) {
             return list;
         }
+        /*
+         * return list.stream()
+         * .filter(e -> e.symbol != null && e.symbol.startsWith(query))
+         * .toList();
+         */
         return list.stream()
-                   .filter(e -> e.symbol != null && e.symbol.startsWith(query))
-                   .toList();
+                .filter(e -> e.symbol != null && e.symbol.equalsIgnoreCase(query))
+                .toList();
+
     }
-    //need add the  and developver
+
     // Manual test
     public static void main(String[] args) {
         var services = new etfsServices();

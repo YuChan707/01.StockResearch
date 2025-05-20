@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -56,26 +57,37 @@ public class FinalProjectSearchETFs {
         List<etfs> list = service.getETFs(query);
 
         if (list == null || list.isEmpty()) {
-            children.add(new Label("🔍 No ETFs found for symbol: " + query));
+            Label noResult = new Label("🔍 No ETFs found for symbol: " + query);
+            noResult.setStyle("-fx-font-size: 16px; -fx-text-fill: darkred;");
+            children.add(noResult);
             return;
         }
 
         for (etfs etf_ : list) {
-            children.add(new Label("Rank: " + etf_.rank));
-            children.add(new Label("Fund Name: " + etf_.fundName));
-            children.add(new Label("Symbol: " + etf_.symbol));
-            children.add(new Label("Price: $" + formatNumber(etf_.price)));
-            children.add(new Label("Quant Rating: " + etf_.quantRating));
-            children.add(new Label("AUM In Billion: $" + formatNumber(etf_.aumInBillion)));
-            children.add(new Label("Frequency: " + etf_.frequency));
-            children.add(new Label("Pay-Out Date: " + etf_.payOutDate));
-            children.add(new Label("Expense Ratio: " + etf_.expenseRatio));
+            VBox card = new VBox(5); // vertical spacing between labels
+            card.setStyle("""
+                        -fx-background-color: #f0f4f8;
+                        -fx-border-radius: 6px;
+                        -fx-background-radius: 6px;
+                        -fx-padding: 10;
+                    """);
 
-            Label spacer = new Label("                                      ");
-            spacer.setStyle("-fx-padding: 10 0 10 0;");
-            children.add(spacer);
+            card.getChildren().addAll(
+                    new Label("Rank: " + etf_.rank),
+                    new Label("Company Name: " + etf_.fundName),
+                    new Label("Symbol: " + etf_.symbol),
+                    new Label("Price: $" + formatNumber(etf_.price)),
+                    new Label("Quant Rating: " + etf_.quantRating),
+                    new Label("AUM in Billions: $" + formatNumber(etf_.aumInBillion)),
+                    new Label("Frequency: " + etf_.frequency),
+                    new Label("Pay-Out Date: " + etf_.payOutDate),
+                    new Label("Expense Ratio: " + etf_.expenseRatio)
+            );
+
+            children.add(card);
         }
     }
+
 
     private String formatNumber(double number) {
         DecimalFormat df = new DecimalFormat("#,###.##");
