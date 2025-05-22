@@ -6,7 +6,7 @@ public class etfs {
     public String fundName;
     public double price;
     public String quantRating;
-    public double aumInBillion;
+    public double aumInBillions;
     public String frequency;
     public String payOutDate;
     public String expenseRatio;
@@ -14,7 +14,7 @@ public class etfs {
     @Override
     public String toString() {
         return "etfs [symbol = "+ symbol +", rank = " + rank + ", fundName = " + fundName + ", price = " + price
-                + ", quantRating = " + quantRating + ", aumInBillion = " + aumInBillion
+                + ", quantRating = " + quantRating + ", aumInBillion = " + aumInBillions
                 + ", frequency = " + frequency + ", payOutDate = " + payOutDate
                 + ", expenseRatio = " + expenseRatio + "]";
     }

@@ -66,7 +66,7 @@ public class FinalProjectSearchETFs {
         for (etfs etf_ : list) {
             VBox card = new VBox(5); // vertical spacing between labels
             card.setStyle("""
-                        -fx-background-color: #f0f4f8;
+                        -fx-background-color:rgb(177, 211, 245);
                         -fx-border-radius: 6px;
                         -fx-background-radius: 6px;
                         -fx-padding: 10;
@@ -77,7 +77,7 @@ public class FinalProjectSearchETFs {
                     new Label("Company Name: " + etf_.fundName),
                     new Label("Price: $" + formatNumber(etf_.price)),
                     new Label("Quant Rating: " + etf_.quantRating),
-                    new Label("AUM in Billions: $" + formatNumber(etf_.aumInBillion)),
+                    new Label("AUM in Billions: $" + (etf_.aumInBillions)),
                     new Label("Frequency: " + etf_.frequency),
                     new Label("Pay-Out Date: " + etf_.payOutDate),
                     new Label("Expense Ratio: " + etf_.expenseRatio + "%")
