@@ -9,7 +9,7 @@ public class etfs {
     public double aumInBillions;
     public String frequency;
     public String payOutDate;
-    public String expenseRatio;
+    public Float expenseRatio;
 
     @Override
     public String toString() {

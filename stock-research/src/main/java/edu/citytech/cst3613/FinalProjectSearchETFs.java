@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.text.DecimalFormat;
@@ -64,29 +65,54 @@ public class FinalProjectSearchETFs {
         }
 
         for (etfs etf_ : list) {
-            VBox card = new VBox(5); // vertical spacing between labels
+            VBox card = new VBox(5);
             card.setStyle("""
-                        -fx-background-color:rgb(177, 211, 245);
+                        -fx-background-color: rgb(177, 211, 245);
                         -fx-border-radius: 6px;
                         -fx-background-radius: 6px;
-                        -fx-padding: 10;
+                        -fx-padding: 20px;
+                        -fx-margin:20px;
                     """);
 
+            // Risk logic
+            // Create the prefix label (e.g., "Status:")
+            Label statusPrefix = new Label("Status:");
+
+            // Create the risk label (colored only)
+            String riskLevel = service.isRisky(etf_.expenseRatio);
+            Label riskLabel = new Label(riskLevel);
+
+            // Set background color only on the risk value
+            String style = switch (riskLevel) {
+                case "Dangerous Risky" -> "-fx-background-color:rgb(152, 0, 0); -fx-text-fill: white;";
+                case "Acceptable Risk" -> "-fx-background-color:rgb(109, 143, 0); -fx-text-fill: white;";
+                default -> "-fx-background-color: gray;";
+            };
+
+            riskLabel.setStyle(style
+                    + " -fx-padding: 4 4 4 4; -fx-border-radius: 4px; -fx-background-radius: 4px;");
+
+            // Group them together in a row
+            HBox statusBox = new HBox(5); // 5px spacing between "Status:" and colored box
+            statusBox.getChildren().addAll(statusPrefix, riskLabel);
+
+            // Add all labels
             card.getChildren().addAll(
                     new Label("Rank: " + etf_.rank),
                     new Label("Company Name: " + etf_.fundName),
+                    new Label("Symbol: " + etf_.symbol),
                     new Label("Price: $" + formatNumber(etf_.price)),
                     new Label("Quant Rating: " + etf_.quantRating),
-                    new Label("AUM in Billions: $" + (etf_.aumInBillions)),
+                    new Label("AUM in Billions: $" + formatNumber(etf_.aumInBillions)),
                     new Label("Frequency: " + etf_.frequency),
                     new Label("Pay-Out Date: " + etf_.payOutDate),
-                    new Label("Expense Ratio: " + etf_.expenseRatio + "%")
+                    new Label("Expense Ratio: " + etf_.expenseRatio + "%"),
+                    statusBox 
             );
 
             children.add(card);
         }
     }
-
 
     private String formatNumber(double number) {
         DecimalFormat df = new DecimalFormat("#,###.##");

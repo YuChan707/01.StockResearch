@@ -62,7 +62,14 @@ public class etfsServices {
         return list.stream()
                 .filter(e -> e.symbol != null && e.symbol.equalsIgnoreCase(query))
                 .toList();
+    }
 
+    public String isRisky(float expenseRatio) {
+        if (expenseRatio > 0.70f) {
+            return "Dangerous Risky";
+        } else {
+            return "Acceptable Risk";
+        }
     }
 
     // Manual test
